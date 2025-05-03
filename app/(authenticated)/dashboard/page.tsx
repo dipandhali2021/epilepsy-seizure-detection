@@ -6,13 +6,10 @@ import Stats from "@/components/dashboard/Stats";
 import RecentAlerts from "@/components/dashboard/RecentAlerts";
 import DeviceStatus from "@/components/dashboard/DeviceStatus";
 import { 
-  BellIcon, 
   BrainCircuit, 
   ActivityIcon,
-  ShieldIcon
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 // Animation variants
 const containerVariants = {
@@ -121,36 +118,6 @@ export default function Dashboard() {
 
             {/* Right Column - Quick Links and Device Status */}
             <motion.div variants={itemVariants} className="lg:col-span-4 space-y-4">
-              <Link href="/contacts" className="block">
-                <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg transition-shadow">
-                  <h3 className="font-semibold flex items-center gap-2">
-                    <ActivityIcon className="h-5 w-5 text-blue-600" />
-                    Emergency Contacts
-                  </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Manage your emergency contacts</p>
-                </div>
-              </Link>
-              
-              <Link href="/alerts" className="block">
-                <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg transition-shadow">
-                  <h3 className="font-semibold flex items-center gap-2">
-                    <BellIcon className="h-5 w-5 text-blue-600" />
-                    Alerts History
-                  </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">View past alerts and notifications</p>
-                </div>
-              </Link>
-              
-              <Link href="/device" className="block">
-                <div className="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg transition-shadow">
-                  <h3 className="font-semibold flex items-center gap-2">
-                    <ShieldIcon className="h-5 w-5 text-blue-600" />
-                    Device Management
-                  </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Configure your prediction device</p>
-                </div>
-              </Link>
-
               <div className="bg-gradient-to-br from-blue-50 to-slate-50 dark:from-slate-800 dark:to-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md">
                 
                 <DeviceStatus />

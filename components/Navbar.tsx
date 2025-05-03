@@ -9,7 +9,6 @@ import {
   LayoutDashboard, 
   CircuitBoard,
   Shield,
-  HelpCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -70,7 +69,7 @@ export default function Navbar() {
               </div>
             )}
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center z-50">
             {user ? (
               <div className="flex items-center space-x-2">
                 {isAdmin && (
@@ -102,28 +101,28 @@ export default function Navbar() {
                     <DropdownMenuSeparator />
                     
                     <DropdownMenuItem asChild>
-                      <Link href="/dashboard?tab=overview" className="flex items-center">
+                      <Link href="/dashboard" className="flex items-center">
                         <LayoutDashboard className="mr-2 h-4 w-4" />
                         <span>Dashboard</span>
                       </Link>
                     </DropdownMenuItem>
                     
                     <DropdownMenuItem asChild>
-                      <Link href="/dashboard?tab=contacts" className="flex items-center">
+                      <Link href="/contacts" className="flex items-center">
                         <UserCircle className="mr-2 h-4 w-4" />
                         <span>Emergency Contacts</span>
                       </Link>
                     </DropdownMenuItem>
                     
                     <DropdownMenuItem asChild>
-                      <Link href="/dashboard?tab=alerts" className="flex items-center">
+                      <Link href="/alerts" className="flex items-center">
                         <BellIcon className="mr-2 h-4 w-4" />
                         <span>Alert History</span>
                       </Link>
                     </DropdownMenuItem>
                     
                     <DropdownMenuItem asChild>
-                      <Link href="/dashboard?tab=device" className="flex items-center">
+                      <Link href="/device" className="flex items-center">
                         <CircuitBoard className="mr-2 h-4 w-4" />
                         <span>Device Setup</span>
                       </Link>
@@ -143,12 +142,7 @@ export default function Navbar() {
                     
                     <DropdownMenuSeparator />
                     
-                    <DropdownMenuItem asChild>
-                      <Link href="/help" className="flex items-center">
-                        <HelpCircle className="mr-2 h-4 w-4" />
-                        <span>Help & Support</span>
-                      </Link>
-                    </DropdownMenuItem>
+                   
                     
                     <DropdownMenuItem onClick={() => signOut()}>
                       <LogOut className="mr-2 h-4 w-4" />
