@@ -36,7 +36,7 @@ export default function Navbar() {
           <div className="flex">
             <Link href="/" className="flex-shrink-0 flex items-center">
               <CircuitBoard className="h-6 w-6 text-blue-600" />
-              <span className="ml-2 text-xl font-bold">Epilepsy Prediction</span>
+              <span className="ml-2 text-xl font-bold">EpiCap</span>
             </Link>
             {user && (
               <div className="hidden md:ml-6 md:flex md:space-x-4 items-center">

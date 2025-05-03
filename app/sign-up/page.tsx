@@ -118,7 +118,7 @@ export default function SignUp() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">
-            Sign Up for Epilepsy Prediction System
+            Sign Up for Epiap
           </CardTitle>
           <CardDescription className="text-center text-muted-foreground">
             Create an account to get started

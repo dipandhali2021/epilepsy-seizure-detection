@@ -90,7 +90,7 @@ export default function SignIn() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">
-            Sign In to Epilepsy Prediction System
+            Sign In to EpiCap
           </CardTitle>
           <CardDescription className="text-center text-muted-foreground">
             Enter your credentials to access your account
