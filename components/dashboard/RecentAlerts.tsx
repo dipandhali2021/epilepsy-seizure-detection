@@ -89,7 +89,7 @@ export default function RecentAlerts() {
             ))}
             
             <div className="flex justify-center pt-2">
-              <Link href="/dashboard?tab=alerts" passHref>
+              <Link href="/alerts" passHref>
                 <Button variant="outline" size="sm">
                   View All Alerts
                 </Button>

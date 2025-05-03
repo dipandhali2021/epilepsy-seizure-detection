@@ -253,19 +253,6 @@ export default function DeviceStatus() {
                 </div>
               </div>
             )}
-
-            <div className="pt-4">
-              <h3 className="font-medium mb-2">Connect Your Device</h3>
-              <p className="text-sm text-muted-foreground mb-2">
-                Send predictions from your Raspberry Pi to this endpoint:
-              </p>
-              <code className="bg-muted p-2 text-xs block rounded overflow-x-auto">
-                POST {process.env.NEXT_PUBLIC_APP_URL || window.location.origin}/api/device-alert
-              </code>
-              <p className="text-xs text-muted-foreground mt-2">
-                Format: {`{ "device_id": "${deviceId}", "timestamp": "2025-05-02T12:00:00Z", "prediction": 1 }`}
-              </p>
-            </div>
           </div>
         ) : (
           <div className="py-6 text-center">

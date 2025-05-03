@@ -83,7 +83,7 @@ export default function Home() {
                 className="text-lg md:text-xl font-medium text-blue-600 dark:text-blue-300 italic"
                 variants={fadeIn}
               >
-                "Sleep, snack, and study in peace—EpiCap's your personal seizure shield."
+                &quot;Sleep, snack, and study in peace—EpiCap&apos;s your personal seizure shield.&quot;
               </motion.p>
               
               <motion.div variants={fadeIn} className="pt-4">

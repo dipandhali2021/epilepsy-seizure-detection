@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertTriangleIcon, BellIcon, UsersIcon } from "lucide-react";
 
 // Define proper types for the alerts and contacts based on the schema
 interface NotificationSent {
@@ -105,58 +103,58 @@ export default function Stats() {
   }
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Total Alerts</CardTitle>
-          <BellIcon className="h-4 w-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{data.totalAlerts}</div>
-          <p className="text-xs text-muted-foreground">
-            Total alerts recorded
-          </p>
-        </CardContent>
-      </Card>
-      
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Seizure Predictions</CardTitle>
-          <BellIcon className="h-4 w-4 text-amber-500" />
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{data.predictionAlerts}</div>
-          <p className="text-xs text-muted-foreground">
-            Predicted seizure events
-          </p>
-        </CardContent>
-      </Card>
-      
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Seizure Detections</CardTitle>
-          <AlertTriangleIcon className="h-4 w-4 text-red-500" />
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{data.onsetAlerts}</div>
-          <p className="text-xs text-muted-foreground">
-            Detected seizure events
-          </p>
-        </CardContent>
-      </Card>
-      
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Emergency Contacts</CardTitle>
-          <UsersIcon className="h-4 w-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{data.contactsCount}</div>
-          <p className="text-xs text-muted-foreground">
-            Registered contacts
-          </p>
-        </CardContent>
-      </Card>
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Total Alerts */}
+      <div className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md">
+        <div className="flex flex-col">
+          <div className="mb-2">
+            <span className="text-sm font-medium text-slate-600 dark:text-slate-400">Total Alerts</span>
+          </div>
+          <div className="flex items-baseline">
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">{data.totalAlerts}</span>
+          </div>
+          <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">Total alerts recorded</span>
+        </div>
+      </div>
+
+      {/* Seizure Predictions */}
+      <div className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md">
+        <div className="flex flex-col">
+          <div className="mb-2">
+            <span className="text-sm font-medium text-slate-600 dark:text-slate-400">Seizure Predictions</span>
+          </div>
+          <div className="flex items-baseline">
+            <span className="text-2xl font-bold text-yellow-600 dark:text-yellow-500">{data.predictionAlerts}</span>
+          </div>
+          <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">Predicted seizure events</span>
+        </div>
+      </div>
+
+      {/* Seizure Detections */}
+      <div className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md">
+        <div className="flex flex-col">
+          <div className="mb-2">
+            <span className="text-sm font-medium text-slate-600 dark:text-slate-400">Seizure Detections</span>
+          </div>
+          <div className="flex items-baseline">
+            <span className="text-2xl font-bold text-red-600 dark:text-red-500">{data.onsetAlerts}</span>
+          </div>
+          <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">Detected seizure events</span>
+        </div>
+      </div>
+
+      {/* Emergency Contacts */}
+      <div className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md">
+        <div className="flex flex-col">
+          <div className="mb-2">
+            <span className="text-sm font-medium text-slate-600 dark:text-slate-400">Emergency Contacts</span>
+          </div>
+          <div className="flex items-baseline">
+            <span className="text-2xl font-bold text-blue-600 dark:text-blue-500">{data.contactsCount}</span>
+          </div>
+          <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">Registered contacts</span>
+        </div>
+      </div>
     </div>
   );
 }

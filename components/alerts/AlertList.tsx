@@ -27,12 +27,17 @@ interface NotificationSent {
   id: string;
   alertId: string;
   contactId: string;
-  type: "email" | "sms";
+  type: "email" | "sms" | "voice";
   recipient: string;
   status: "success" | "failed";
   timestamp: string;
   acknowledged: boolean;
   acknowledgedAt?: string;
+  contact: {
+    name: string;
+    email?: string;
+    phone?: string;
+  };
 }
 
 interface PaginationInfo {

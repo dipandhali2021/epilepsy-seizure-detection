@@ -28,10 +28,10 @@ export default authMiddleware({
     const isPublicPathByRegex = publicPathRegexes.some(regex => regex.test(path));
     const isPublicPath = publicRoutes.includes(path) || isPublicPathByRegex;
     
-    // Handle unauthenticated users trying to access protected routes
-    if (!auth.userId && !isPublicPath) {
-      return NextResponse.redirect(new URL("/sign-in", req.url));
-    }
+    // // Handle unauthenticated users trying to access protected routes
+    // if (!auth.userId && !isPublicPath) {
+    //   return NextResponse.redirect(new URL("/sign-in", req.url));
+    // }
 
     if (auth.userId) {
       try {

@@ -50,19 +50,19 @@ export default function Navbar() {
                   Dashboard
                 </Link>
                 <Link
-                  href="/dashboard?tab=contacts"
+                  href="/contacts"
                   className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Contacts
                 </Link>
                 <Link
-                  href="/dashboard?tab=alerts"
+                  href="/alerts"
                   className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Alerts
                 </Link>
                 <Link
-                  href="/dashboard?tab=device"
+                  href="/device"
                   className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Device
