@@ -1,8 +1,7 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MailIcon, PhoneIcon, Pencil, Trash2, StarIcon, Bell, Crown } from "lucide-react";
-import { motion } from "framer-motion";
+import { MailIcon, PhoneIcon, Pencil, Trash2, Bell, Crown } from "lucide-react";
 
 interface Contact {
   id: string;

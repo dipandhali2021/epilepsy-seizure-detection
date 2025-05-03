@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldIcon, CircuitBoard, WifiIcon, ServerIcon } from "lucide-react";
+import { CircuitBoard, WifiIcon, ServerIcon } from "lucide-react";
 import DeviceStatus from "@/components/dashboard/DeviceStatus";
 import Image from "next/image";
 import { useState, useEffect } from "react";

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { AlertOctagon, AlertTriangle, CheckCircle, PlayCircle, Phone, Mail, MessageSquare, Info, BellRing } from 'lucide-react';
+import { AlertOctagon, AlertTriangle, CheckCircle, Phone, Mail, MessageSquare, Info, BellRing } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { motion, AnimatePresence } from "framer-motion";
@@ -92,8 +92,8 @@ export function TestAlert() {
             <div>
               <h4 className="font-medium text-amber-800 dark:text-amber-300 mb-1">About SMS Messages</h4>
               <p className="text-xs text-amber-700/90 dark:text-amber-400/90">
-                Messages sent from a Twilio trial account will include "Sent from your Twilio trial account" 
-                in the message body. To remove this message, you'll need to upgrade to a paid Twilio account.
+                Messages sent from a Twilio trial account will include &quot;Sent from your Twilio trial account&quot; 
+                in the message body. To remove this message, you&apos;ll need to upgrade to a paid Twilio account.
               </p>
             </div>
           </div>

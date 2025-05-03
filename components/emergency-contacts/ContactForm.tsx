@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { motion } from "framer-motion";
 import { Mail, MessageSquare, PhoneCall, Crown, X } from "lucide-react";
 
 interface Contact {
@@ -40,7 +39,7 @@ export default function ContactForm({ onSubmit, onCancel, initialData }: Contact
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading] = useState<boolean>(false);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};

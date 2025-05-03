@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import ContactCard from "./ContactCard";
 import ContactForm from "./ContactForm";
-import { PlusCircle, Loader2 } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Contact {

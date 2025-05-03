@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Pagination } from "@/components/Pagination";
 import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
-import { AlertTriangleIcon, BellIcon, BellRing, Loader2 } from "lucide-react";
+import { AlertTriangleIcon, BellIcon, BellRing } from "lucide-react";
 import { NotificationStatus } from "./NotificationStatus";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";

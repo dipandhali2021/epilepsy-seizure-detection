@@ -159,7 +159,12 @@ export async function DELETE(req: Request, { params }: ContactRequest) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    // Delete the contact
+    // First, delete all related notification records
+    await prisma.notificationSent.deleteMany({
+      where: { contactId }
+    });
+
+    // Then delete the contact
     await prisma.emergencyContact.delete({
       where: { id: contactId },
     });
