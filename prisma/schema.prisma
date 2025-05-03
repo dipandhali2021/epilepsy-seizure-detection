@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String              @id
+  email             String              @unique
+  name              String
+  role              String              @default("user")
+  deviceId          String?             @unique
+  emergencyContacts EmergencyContact[]
+  alerts            Alert[]
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+}
+
+model EmergencyContact {
+  id                   String   @id @default(cuid())
+  name                 String
+  email                String
+  phone                String
+  relationship         String
+  isPrimaryContact     Boolean  @default(false)
+  notificationPreferences Json    @default("{\"email\":true,\"sms\":true,\"voice\":true}")
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId               String
+  notifications        NotificationSent[]
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model Alert {
+  id                 String             @id @default(cuid())
+  userId             String
+  deviceId           String
+  timestamp          DateTime
+  type               String            // 'prediction' or 'onset'
+  confidence         Float
+  firstAcknowledgedAt DateTime?
+  firstAcknowledgedBy String?
+  notificationsSent  NotificationSent[]
+  user               User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+}
+
+model NotificationSent {
+  id            String    @id @default(cuid())
+  alertId       String
+  contactId     String
+  type          String    // 'email' or 'sms'
+  recipient     String
+  status        String    // 'success' or 'failed'
+  timestamp     DateTime
+  acknowledged  Boolean   @default(false)
+  acknowledgedAt DateTime?
+  alert         Alert     @relation(fields: [alertId], references: [id], onDelete: Cascade)
+  contact       EmergencyContact @relation(fields: [contactId], references: [id])
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
