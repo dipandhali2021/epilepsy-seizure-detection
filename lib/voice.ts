@@ -2,9 +2,9 @@ import twilio from 'twilio';
 const { twiml: { VoiceResponse } } = twilio;
 
 // Initialize Twilio client with your account credentials
-const accountSid = process.env.TWILIO_ACCOUNT_SID || 'AC403ff996991332f050710890820161d4';
+const accountSid = process.env.TWILIO_ACCOUNT_SID || 'SDKFJSDFKJKDSGSDJG324235325';
 const authToken = process.env.TWILIO_AUTH_TOKEN || '';
-const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER || '+19897047284';
+const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER || '+91XXXXXXXXXX'; // Replace with your Twilio phone number
 const client = twilio(accountSid, authToken);
 
 /**

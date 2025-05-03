@@ -107,22 +107,21 @@ Create a `.env.local` file:
 
 ```env
 # Database
-DATABASE_URL="your-neondb-url"
+DATABASE_URL=postgresql://username:password@your-db-host/dbname?sslmode=require
+
+# Twilio
+TWILIO_ACCOUNT_SID=your_twilio_account_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_PHONE_NUMBER=your_twilio_phone_number
 
 # Clerk Authentication
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
+WEBHOOK_SECRET=your_webhook_secret
 
-# Twilio
-TWILIO_ACCOUNT_SID=your_twilio_sid
-TWILIO_AUTH_TOKEN=your_twilio_token
-TWILIO_PHONE_NUMBER=your_twilio_phone
-
-# Email
-SMTP_HOST=your_smtp_host
-SMTP_PORT=your_smtp_port
-SMTP_USER=your_smtp_user
-SMTP_PASSWORD=your_smtp_password
+# Email Configuration
+EMAIL_USER=your_email@example.com
+EMAIL_PASSWORD=your_email_password
 ```
 
 ### Installation
