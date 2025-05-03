@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import ContactCard from "./ContactCard";
 import ContactForm from "./ContactForm";
+import { PlusCircle, Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Contact {
   id: string;
@@ -18,6 +20,30 @@ interface Contact {
     voice: boolean;
   };
 }
+
+const listVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4 }
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.3 }
+  }
+};
 
 export default function ContactList() {
   const [contacts, setContacts] = useState<Contact[]>([]);
@@ -181,52 +207,135 @@ export default function ContactList() {
   };
 
   if (loading) {
-    return <div className="flex justify-center p-8">Loading emergency contacts...</div>;
+    return (
+      <Card className="w-full border-0 bg-transparent shadow-none">
+        <CardHeader className="flex flex-row items-center justify-between p-6">
+          <div className="h-7 w-32 bg-muted rounded animate-pulse" />
+          <div className="h-10 w-32 bg-muted rounded animate-pulse" />
+        </CardHeader>
+        <CardContent className="p-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            {[...Array(2)].map((_, index) => (
+              <div key={index} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                <div className="p-6">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1 space-y-2">
+                      <div className="h-6 w-32 bg-muted rounded animate-pulse" />
+                      <div className="h-4 w-24 bg-muted rounded animate-pulse" />
+                    </div>
+                  </div>
+
+                  <div className="mt-4 space-y-3">
+                    <div className="h-10 bg-slate-50 dark:bg-slate-900 rounded-lg animate-pulse" />
+                    <div className="h-10 bg-slate-50 dark:bg-slate-900 rounded-lg animate-pulse" />
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                    <div className="flex items-center">
+                      <div className="h-4 w-4 bg-muted rounded mr-3 animate-pulse" />
+                      <div className="h-4 w-24 bg-muted rounded animate-pulse" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-slate-50 dark:bg-slate-900 p-4 flex justify-between">
+                  <div className="h-8 w-24 bg-muted rounded animate-pulse" />
+                  <div className="flex gap-2">
+                    <div className="h-8 w-20 bg-muted rounded animate-pulse" />
+                    <div className="h-8 w-20 bg-muted rounded animate-pulse" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    );
   }
 
   return (
-    <Card className="w-full">
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Emergency Contacts</CardTitle>
+    <Card className="w-full border-0 bg-transparent shadow-none">
+      <CardHeader className="flex flex-row items-center justify-between p-6">
+        <CardTitle className="text-xl font-semibold">Your Contacts</CardTitle>
         {!showForm && (
-          <Button onClick={() => setShowForm(true)}>Add Contact</Button>
+          <Button onClick={() => setShowForm(true)} className="gap-2 bg-blue-600 hover:bg-blue-700">
+            <PlusCircle className="h-5 w-5" />
+            Add Contact
+          </Button>
         )}
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-6">
         {error && (
-          <div className="bg-destructive/15 text-destructive p-4 mb-4 rounded-md">
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-red-100 border border-red-200 text-red-800 p-4 mb-6 rounded-xl"
+          >
             {error}
-          </div>
+          </motion.div>
         )}
 
-        {showForm ? (
-          <ContactForm 
-            onSubmit={handleFormSubmit} 
-            onCancel={handleCancelForm} 
-            initialData={editingContact || undefined}
-          />
-        ) : (
-          <>
-            {contacts.length === 0 ? (
-              <div className="text-center py-8">
-                <p className="text-muted-foreground mb-4">No emergency contacts found</p>
-                <Button onClick={() => setShowForm(true)}>Add Your First Contact</Button>
-              </div>
-            ) : (
-              <div className="grid gap-4 md:grid-cols-2">
-                {contacts.map((contact) => (
-                  <ContactCard 
-                    key={contact.id}
-                    contact={contact}
-                    onDelete={() => handleDelete(contact.id)}
-                    onEdit={() => handleEdit(contact)}
-                    onSetPrimary={() => handleSetPrimary(contact.id)}
-                  />
-                ))}
-              </div>
-            )}
-          </>
-        )}
+        <AnimatePresence mode="wait">
+          {showForm ? (
+            <motion.div
+              key="form"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6"
+            >
+              <ContactForm 
+                onSubmit={handleFormSubmit} 
+                onCancel={handleCancelForm}
+                initialData={editingContact || undefined}
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="list"
+              variants={listVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {contacts.length === 0 ? (
+                <motion.div 
+                  variants={itemVariants}
+                  className="text-center py-12 px-4"
+                >
+                  <div className="mb-4">
+                    <div className="mx-auto h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                      <PlusCircle className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-medium mb-2">No contacts yet</h3>
+                  <p className="text-muted-foreground mb-6">Add your first emergency contact to get started</p>
+                  <Button onClick={() => setShowForm(true)} className="gap-2 bg-blue-600 hover:bg-blue-700">
+                    <PlusCircle className="h-5 w-5" />
+                    Add Your First Contact
+                  </Button>
+                </motion.div>
+              ) : (
+                <div className="grid gap-6 md:grid-cols-2">
+                  {contacts.map((contact) => (
+                    <motion.div
+                      key={contact.id}
+                      variants={itemVariants}
+                      layout
+                    >
+                      <ContactCard 
+                        contact={contact}
+                        onDelete={() => handleDelete(contact.id)}
+                        onEdit={() => handleEdit(contact)}
+                        onSetPrimary={() => handleSetPrimary(contact.id)}
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </CardContent>
     </Card>
   );

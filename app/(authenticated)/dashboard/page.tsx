@@ -152,10 +152,7 @@ export default function Dashboard() {
               </Link>
 
               <div className="bg-gradient-to-br from-blue-50 to-slate-50 dark:from-slate-800 dark:to-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md">
-                <h3 className="text-lg font-semibold mb-4 flex items-center text-blue-700 dark:text-blue-400">
-                  <ShieldIcon className="mr-2 h-5 w-5" />
-                  Device Status
-                </h3>
+                
                 <DeviceStatus />
               </div>
             </motion.div>

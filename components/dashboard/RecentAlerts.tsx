@@ -45,8 +45,25 @@ export default function RecentAlerts() {
       </CardHeader>
       <CardContent>
         {loading ? (
-          <div className="flex justify-center py-4">
-            <span className="text-muted-foreground">Loading recent alerts...</span>
+          <div className="space-y-4">
+            {[...Array(5)].map((_, index) => (
+              <div 
+                key={index}
+                className="flex items-center justify-between border-b pb-2 last:border-0"
+              >
+                <div className="flex items-center">
+                  <div className="h-8 w-8 rounded-full bg-muted animate-pulse" />
+                  <div className="ml-3">
+                    <div className="h-4 w-32 bg-muted rounded animate-pulse mb-2" />
+                    <div className="h-3 w-24 bg-muted rounded animate-pulse" />
+                  </div>
+                </div>
+                <div className="h-5 w-16 bg-muted rounded animate-pulse" />
+              </div>
+            ))}
+            <div className="flex justify-center pt-2">
+              <div className="h-8 w-28 bg-muted rounded animate-pulse" />
+            </div>
           </div>
         ) : alerts.length === 0 ? (
           <div className="py-6 text-center">

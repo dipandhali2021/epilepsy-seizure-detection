@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+  import { useEffect, useState } from "react";
 
 // Define proper types for the alerts and contacts based on the schema
 interface NotificationSent {
@@ -99,7 +99,23 @@ export default function Stats() {
   }, []);
 
   if (loading) {
-    return <div>Loading stats...</div>;
+    return (
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {[...Array(4)].map((_, index) => (
+          <div key={index} className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-md">
+            <div className="flex flex-col">
+              <div className="mb-2">
+                <div className="h-4 w-24 bg-muted rounded animate-pulse" />
+              </div>
+              <div className="flex items-baseline">
+                <div className="h-8 w-16 bg-muted rounded animate-pulse" />
+              </div>
+              <div className="mt-1 h-3 w-20 bg-muted rounded animate-pulse" />
+            </div>
+          </div>
+        ))}
+      </div>
+    );
   }
 
   return (
